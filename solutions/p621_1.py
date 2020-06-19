@@ -3,6 +3,8 @@ from typing import List
 
 
 class Solution:
+    # noinspection PyMethodMayBeStatic
+    # noinspection PyPep8Naming
     def leastInterval(self, tasks: List[str], n: int) -> int:
         return least_interval(tasks, n)
 
@@ -11,7 +13,7 @@ def least_interval(tasks, n):
     counter = collections.Counter(tasks)
     long_pole, long_pole_length = counter.most_common(1)[0]
     long_pole_count = list(counter.values()).count(long_pole_length)
-    return (n + 1) * (long_pole_length - 1) + long_pole_count
+    return max(len(tasks), (n + 1) * (long_pole_length - 1) + long_pole_count)
 
 
 def test():
